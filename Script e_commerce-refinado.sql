@@ -237,11 +237,11 @@ VALUES
 INSERT INTO Pagamento (
     idPedido, forma_pagamento, valor_pago, data_pagamento)
 VALUES
-(100, 'Cartão de Crédito', 255.16, '2024-10-03'),  
-(101, 'PIX', 221.08, '2024-10-03'),
-(102, 'Boleto', 580.74, '2024-10-04'), 
-(104, 'Cartão de Débito', 137.35, '2024-10-07'), 
-(108, 'Cartão de Crédito', 138.58, '2024-10-09'),
+('100', 'Cartão de Crédito', 255.16, '2024-10-03'),  
+('101', 'PIX', 221.08, '2024-10-03'),
+('102', 'Boleto', 580.74, '2024-10-04'), 
+('104', 'Cartão de Débito', 137.35, '2024-10-07'), 
+('108', 'Cartão de Crédito', 138.58, '2024-10-09'),
 ('103', 'Cartão de Crédito', '290.32', '2024-10-04'),
 ('105', 'PIX','970.06', '2024-10-07'),
 ('106', 'Cartão de Débito', '3242.40', '2024-10-08'),
