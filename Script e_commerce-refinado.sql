@@ -3,7 +3,7 @@ CREATE DATABASE e_commerce;
  USE E_commerce;
     
 -- criar tabela cliente_pf
-   CREATE TABLE Cliente_PF(
+    CREATE TABLE Cliente_PF (
     idCliente_PF varchar (10) primary key,
     nome varchar(45),
     cpf varchar(11)  not null,
@@ -11,8 +11,8 @@ CREATE DATABASE e_commerce;
     endereço varchar(45) not null);
 
 -- inserir os dados da tabela cliente_pf
-INSERT INTO 
-    Cliente_PF (idCliente_pf, nome, cpf, endereço)
+INSERT INTO Cliente_PF (
+    idCliente_pf, nome, cpf, endereço)
 VALUES
 ('1_pf', 'Antonio Jose da Silva', '12345678901', 'Rua das Flores 01 Casa 05'),
 ('2_pf', 'Joaquina Maria Almeida', '98765432102', 'Avenida Amoreira 1077'),
@@ -25,8 +25,9 @@ VALUES
 ('9_pf', 'Eduardo Jose Lamouniere', '75395156409', 'Alameda Esmeralda 17 Lote 05'),
 ('10_pf', 'Elisa Romao Assucena', '24637924910', 'Rua do Mercado 66 Casa 03');
 
+
 -- criar tabela cliente_pj
-CREATE TABLE Cliente_PJ(
+    CREATE TABLE Cliente_PJ (
     idCliente_PJ varchar (10) primary key,
     razao_social varchar(45),
     cnpj varchar(14) not null,
@@ -34,8 +35,8 @@ CREATE TABLE Cliente_PJ(
     endereco varchar(45) not null);
     
 -- inserir dados na tabela cliente_pj
- INSERT INTO Cliente_PJ (
-idCliente_PJ, razao_social, cnpj, endereco)
+INSERT INTO Cliente_PJ (
+    idCliente_PJ, razao_social, cnpj, endereco)
 VALUES
 ('1_pj', 'Shine Limpeza LTDA.', '14796606000190', 'Alameda Esmeralda 1 Lote 01'),
 ('2_pj', 'Maria Faxina LTDA.', '13347016000117', 'Travessa Formosa 72 Loja 01'),
@@ -48,16 +49,17 @@ VALUES
 ('9_pj', 'Espaco Estetica Tratamentos LTDA.', '6912785000155','Travessa Formosa 56 Bloco C Terreo'),
 ('10_pj', 'Espelho, Espelho meu LTDA.', '61695227000193', 'Avenida Amoreira 33');
 
+
 -- criar tabela produto
-CREATE TABLE Produto(
-   	 idProduto int not null unique primary key,
-	 categoria varchar(45),
-   	 descricao varchar(45),
-   	 valor varchar(45));
+     CREATE TABLE Produto (
+     idProduto int not null unique primary key,
+     categoria varchar(45),
+     descricao varchar(45),
+     valor varchar(45));
    
  -- inserir dados na tabela produto
 INSERT INTO Produto (
-idProduto, categoria, descricao, valor)
+     idProduto, categoria, descricao, valor)
 VALUES
 ('121', 'Produto 019', 'CAT. I', '127.58'),
 ('519', 'Produto 020', 'CAT. H', '221.08'),
@@ -81,8 +83,9 @@ VALUES
 ('245', 'Produto 038', 'CAT. A', '5.94'),
 ('942', 'Produto 039', 'CAT. O', '20.51');
 
+
 -- criar tabela pedido
-CREATE TABLE Pedido(
+    CREATE TABLE Pedido (
     idPedido int not null unique primary key,
     id_cliente varchar(10) not null,
     status_pedido varchar(45),
@@ -93,7 +96,7 @@ CREATE TABLE Pedido(
   
 -- inserir os dados da tabela pedido
 INSERT INTO Pedido (
-  	idPedido, id_cliente, status_pedido, status_pagamento, descricao, frete, data_compra)
+     idPedido, id_cliente, status_pedido, status_pagamento, descricao, frete, data_compra)
 VALUES	
 ('101', '7_pj', 'Concluido', 'Efetuado', '519', 'Fixo', '2024-10-03'),
 ('102', '1_pj', 'Concluido', 'Efetuado', '813', 'Gratuito', '2024-10-04'),
@@ -116,17 +119,17 @@ VALUES
 ('119', '9_pf', 'Concluido', 'Efetuado', '245', 'Fixo', '2024-10-15'),
 ('120', '3_pf', 'Concluido', 'Efetuado', '121', 'Fixo', '2024-10-03');
 
+
 -- criar tabela fornecedor
-CREATE TABLE Fornecedor(
+    CREATE TABLE Fornecedor (
     idFornecedor int primary key,
     razao_social varchar (45),
     cnpj varchar(14) not null,
     CONSTRAINT unique_fornecedor UNIQUE (cnpj));
     
 -- inserir dados na tabela fornecedor
- INSERT INTO 
-	Fornecedor(
-idFornecedor, razao_social, cnpj)
+INSERT INTO Fornecedor (
+    idFornecedor, razao_social, cnpj)
 VALUES
 ('1', 'Tudo Certo LTDA', '39076606000190'),
 ('2', 'SF Eletronicos LTDA.', '34982146000967'),
@@ -134,16 +137,16 @@ VALUES
 ('4', 'Rodovia Transportes LTDA.', '74138415000271'),
 ('5', 'Viva Uniformes LTDA.', '24876950001001');
 
+
 -- criar tabela estoqque
-CREATE TABLE Estoque(
+    CREATE TABLE Estoque (
     idEstoque int primary key,
     idProduto int,
     filial varchar(20));
 
 -- inserir dados na tabela estoque
- INSERT INTO 
-	Estoque(
-idEstoque, idProduto, filial)
+INSERT INTO Estoque (
+    idEstoque, idProduto, filial)
 VALUES
 ('1', '121', 'Azul'),
 ('2', '519', 'Verde'),
@@ -167,22 +170,25 @@ VALUES
 ('20', '245', 'Verde'),
 ('21', '942', 'Azul');
 
+
 -- criar tabela Filial
-CREATE TABLE Filial (
+    CREATE TABLE Filial (
     idFilial INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45) NOT NULL,
     localizacao VARCHAR(30));
 
 -- inseriar dados na tabela Filial
-INSERT INTO Filial (idFilial, nome, localizacao)
+INSERT INTO Filial (
+     idFilial, nome, localizacao)
 VALUES
-    ('1', 'Azul', 'São Paulo'),
-    ('2', 'Verde', 'Pernambuco'),
-    ('3', 'Amarela', 'Distrito Federal'),
-    ('4', 'Vermelha', 'Pará');
+('1', 'Azul', 'São Paulo'),
+('2', 'Verde', 'Pernambuco'),
+('3', 'Amarela', 'Distrito Federal'),
+('4', 'Vermelha', 'Pará');
+
 
 -- criar tabela Funcionario
-CREATE TABLE Funcionario (
+    CREATE TABLE Funcionario (
     idFuncionario INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45) NOT NULL,
     cargo VARCHAR(45),
@@ -190,32 +196,36 @@ CREATE TABLE Funcionario (
     salario DECIMAL(10, 2));
 
 -- inserir dados na tabela Funcionario
-INSERT INTO Funcionario (idFuncionario, nome, cargo, filial, salario)
+INSERT INTO Funcionario (
+    idFuncionario, nome, cargo, filial, salario)
 VALUES
-    ('1001', 'João Silva', 'Gerente', 'Azul', 3500.00),
-    ('1002', 'Maria Oliveira', 'Atendente', 'Verde', 2200.00),
-    ('1003', 'Carlos Souza', 'Operador de Estoque', 'Amarela', 2000.00),
-    ('1004', 'Ana Costa', 'Supervisora', 'Vermelha', 3000.00),
-    ('1005', 'Roberto Lima', 'Caixa', 'Azul', 1800.00);
+('1001', 'João Silva', 'Gerente', 'Azul', 3500.00),
+('1002', 'Maria Oliveira', 'Atendente', 'Verde', 2200.00),
+('1003', 'Carlos Souza', 'Operador de Estoque', 'Amarela', 2000.00),
+('1004', 'Ana Costa', 'Supervisora', 'Vermelha', 3000.00),
+('1005', 'Roberto Lima', 'Caixa', 'Azul', 1800.00);
+
 
 -- criar tabela Transportadora
-CREATE TABLE Transportadora (
+    CREATE TABLE Transportadora (
     idTransportadora INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45) NOT NULL,
     cnpj VARCHAR(14) UNIQUE NOT NULL,
-    telefone VARCHAR(15)
-);
+    telefone VARCHAR(15));
+
 -- inserir dados tabela Transportadora
-INSERT INTO Transportadora (nome, cnpj, telefone)
+INSERT INTO Transportadora (
+     nome, cnpj, telefone)
 VALUES
-    ('Rapido Express LTDA', '12345678000101', '11987654321'),
-    ('Entrega Certa SA', '98765432000111', '11876543210'),
-    ('Transportes Urgentes ME', '11122233000199', '11999887766'),
-    ('Via Rápida Transportes', '44455566000122', '11223344556'),
-    ('Frota Nacional LTDA', '22233344000155', '11445566778');
+('Rapido Express LTDA', '12345678000101', '11987654321'),
+('Entrega Certa SA', '98765432000111', '11876543210'),
+('Transportes Urgentes ME', '11122233000199', '11999887766'),
+('Via Rápida Transportes', '44455566000122', '11223344556'),
+('Frota Nacional LTDA', '22233344000155', '11445566778');
+
 
 -- criar tabela Pagamento
-CREATE TABLE Pagamento (
+    CREATE TABLE Pagamento (
     idPagamento INT PRIMARY KEY AUTO_INCREMENT,
     idPedido INT NOT NULL,
     forma_pagamento VARCHAR(45) NOT NULL,
@@ -224,29 +234,30 @@ CREATE TABLE Pagamento (
 
 
 -- inserir dados tabela Pagamento
-INSERT INTO Pagamento (idPedido, forma_pagamento, valor_pago, data_pagamento)
+INSERT INTO Pagamento (
+    idPedido, forma_pagamento, valor_pago, data_pagamento)
 VALUES
-    (100, 'Cartão de Crédito', 255.16, '2024-10-03'),  
-    (101, 'PIX', 221.08, '2024-10-03'),
-    (102, 'Boleto', 580.74, '2024-10-04'), 
-    (104, 'Cartão de Débito', 137.35, '2024-10-07'), 
-    (108, 'Cartão de Crédito', 138.58, '2024-10-09'),
-   	('103', 'Cartão de Crédito', '290.32', '2024-10-04'),
-	('105', 'PIX','970.06', '2024-10-07'),
-	('106', 'Cartão de Débito', '3242.40', '2024-10-08'),
-	('107', 'Boleto','145.16', '2024-10-08'),
-	('109', 'Cartão de Crédito', '765.48', '2024-10-09'),
-	('110', 'Boleto', '2178.00', '2024-10-10'),
-	('111', 'Boleto', '19444.80', '2024-10-10'),
-	('112', 'Cartão de Crédito', '514.74', '2024-10-10'),
-	('113', 'Cartão de Débito', '1132.90', '2024-10-10'),
-	('114', 'Cartão de Crédito', '72.58', '2024-10-11'),
-	('115', 'PIX', '11349.60', '2024-10-11'),
-	('116', 'Cartão de Crédito', '69.21', '2024-10-14'),
-	('117', 'Cartão de Débito', '899.47', '2024-10-15'),
-	('118', 'Cartão de Débito', '657.11', '2024-10-15'),
-	('119', 'Boleto', '5940.00', '2024-10-15'),
-	('120', 'Boleto', '127.58', '2024-10-03');
+(100, 'Cartão de Crédito', 255.16, '2024-10-03'),  
+(101, 'PIX', 221.08, '2024-10-03'),
+(102, 'Boleto', 580.74, '2024-10-04'), 
+(104, 'Cartão de Débito', 137.35, '2024-10-07'), 
+(108, 'Cartão de Crédito', 138.58, '2024-10-09'),
+('103', 'Cartão de Crédito', '290.32', '2024-10-04'),
+('105', 'PIX','970.06', '2024-10-07'),
+('106', 'Cartão de Débito', '3242.40', '2024-10-08'),
+('107', 'Boleto','145.16', '2024-10-08'),
+('109', 'Cartão de Crédito', '765.48', '2024-10-09'),
+('110', 'Boleto', '2178.00', '2024-10-10'),
+('111', 'Boleto', '19444.80', '2024-10-10'),
+('112', 'Cartão de Crédito', '514.74', '2024-10-10'),
+('113', 'Cartão de Débito', '1132.90', '2024-10-10'),
+('114', 'Cartão de Crédito', '72.58', '2024-10-11'),
+('115', 'PIX', '11349.60', '2024-10-11'),
+('116', 'Cartão de Crédito', '69.21', '2024-10-14'),
+('117', 'Cartão de Débito', '899.47', '2024-10-15'),
+('118', 'Cartão de Débito', '657.11', '2024-10-15'),
+('119', 'Boleto', '5940.00', '2024-10-15'),
+('120', 'Boleto', '127.58', '2024-10-03');
 
 
 
